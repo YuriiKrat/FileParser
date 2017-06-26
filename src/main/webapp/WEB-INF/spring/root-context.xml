@@ -19,6 +19,7 @@
 
     <context:component-scan base-package="com.gmail.yuriikrat.controllers" />
     <context:component-scan base-package="com.gmail.yuriikrat.repositories" />
+    <context:component-scan base-package="com.gmail.yuriikrat.services" />
     <context:component-scan base-package="com.gmail.yuriikrat.utils" />
 
     <mvc:default-servlet-handler />
@@ -44,10 +45,9 @@
 
     </bean>
 
-    <!-- SERVICES -->
-
     <bean id="fileParsingService" class="com.gmail.yuriikrat.services.FileParsingServiceImpl" />
     <bean id="parseResultService" class="com.gmail.yuriikrat.services.ParseResultServiceImpl" />
+    <bean id="intermediateResultService" class="com.gmail.yuriikrat.services.IntermediateResultServiceImpl" />
 
     <bean id="parsingResultRepository" class="com.gmail.yuriikrat.repositories.ParsingResultRepositoryImpl">
         <property name="dataSource" ref="dataSourceConfig" />

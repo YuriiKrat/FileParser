@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 /**
+ * Controller for file uploading and starting parsing process
+ *
  * @author Yurii Krat
  * @version 1.0
  * @since 25.06.17.

@@ -2,6 +2,7 @@ package com.gmail.yuriikrat.services;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,9 +21,13 @@ public class FileParsingServiceImpl implements FileParsingService {
 
     private TaskExecutor taskExecutor;
 
+    private ApplicationContext applicationContext;
+
     @Autowired
-    public FileParsingServiceImpl(TaskExecutor taskExecutor) {
+    public FileParsingServiceImpl(TaskExecutor taskExecutor,
+                                  ApplicationContext applicationContext) {
         this.taskExecutor = taskExecutor;
+        this.applicationContext = applicationContext;
     }
 
     @Override
@@ -33,8 +38,12 @@ public class FileParsingServiceImpl implements FileParsingService {
             String line;
             while((line = reader.readLine()) != null) {
                 LOG.info("Processing line:" + line);
-                taskExecutor.execute(new ParsingWorker(line));
+                ParsingWorker worker = (ParsingWorker) applicationContext.getBean("parsingWorker");
+                worker.setLine(line);
+                taskExecutor.execute(worker);
             }
+            ParsingWorker worker = (ParsingWorker) applicationContext.getBean("parsingWorker");
+            worker.finishParsing();
         }
     }
 }

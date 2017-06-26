@@ -1,6 +1,8 @@
 package com.gmail.yuriikrat.domain;
 
 /**
+ * POJO class which represents parsing result object
+ *
  * @author Yurii Krat
  * @version 1.0
  * @since 26.06.17.

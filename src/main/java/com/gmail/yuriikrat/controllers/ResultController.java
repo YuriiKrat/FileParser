@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
+ * Controller for retrieving result of parsing
+ *
  * @author Yurii Krat
  * @version 1.0
  * @since 25.06.17.

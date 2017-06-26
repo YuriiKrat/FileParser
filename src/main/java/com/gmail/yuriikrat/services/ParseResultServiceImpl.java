@@ -26,7 +26,7 @@ public class ParseResultServiceImpl implements ParseResultService {
     }
 
     @Override
-    public void addParsingResult(ParsingResult pr) {
-        repository.insert(pr);
+    public void update(List<ParsingResult> prList) {
+        repository.update(prList);
     }
 }
